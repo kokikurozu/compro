@@ -1,37 +1,25 @@
 N, M, K = map(int,input().split())
 A = list(map(int, input().split()))
 B = list(map(int,input().split()))
-minute = 0
-cnt = 0
-for i in A:
-    minute += i
-    cnt += 1
-    if minute > K:
-        minute -= i
+minutes = sum(A)
+cnt = len(A)
+roopA_count = len(A) - 1
+roopB_count = 0
+max_cnt = 0
+
+while roopA_count >= 0 and not(roopB_count == len(B)):
+    if minutes > K:
+        minutes -= A[roopA_count]
         cnt -= 1
-        max_cnt = cnt
-        lasti = cnt
-        break
-
-if cnt == len(A):
-    lasti = cnt
-    max_cnt = cnt
-
-for j in B:
-    if minute > K:
-        cnt -= 1
-        max_cnt = max(max_cnt, cnt)
-        break
-    minute += j
-    cnt += 1
-    if minute <= K:
-        max_cnt = max(max_cnt, cnt)
-    if minute > K:
-        for k in range(lasti):
-            minute -= A[lasti]
-            cnt -= 1
-            lasti -= 1
-    if minute < K:
-        max_cnt = max(max_cnt, cnt)
-
+        roopA_count -= 1
+    if minutes <= K:
+        max_cnt = max(cnt, max_cnt)
+        while roopB_count < len(B):
+            minutes += B[roopB_count]
+            cnt += 1
+            roopB_count += 1
+            if minutes <= K:
+                max_cnt = max(cnt, max_cnt)
+            else:
+                break
 print(max_cnt)
