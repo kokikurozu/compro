@@ -1,6 +1,3 @@
-#UnionFind
-#新しくUnion型みたいな箱を作って使っていると思うと分かりやすい
-#最初に箱と要素を用意しておいて、箱同士をつなげてくれている
 class UnionFind():
     def __init__(self, n):
         self.n = n
@@ -48,26 +45,26 @@ class UnionFind():
     def __str__(self):
        return '\n'.join('{}: {}'.format(r, self.members(r)) for r in self.roots())
 
-N, M = map(int, input().split())
+N,M = map(int,input().split())
+ai = list(map(int,input().split()))
+bi = list(map(int,input().split()))
+#cd = [list(map(int,input().split()))for _ in range(M)]
+
 uf = UnionFind(N)
-now_max = 0
+for i in range(M):
+    c,d = map(int,input().split())
+    uf.union(c-1,d-1)
 
-while True:
-    try:
-        listA = list(map(int,input().split()))
-        uf.union(listA[0] - 1, listA[1] - 1)
-    except:
-        break
-for i in range(N):
-    now_max = max(uf.size(i),now_max)
-#print(uf)
-#print(now_max)
-#print(uf.group_count())
-#print(uf.roots())
-#print(uf.members(8))
-#print(uf.roots())
-#print(type(uf.roots()))
-print(uf.all_group_members())
-#print(type(uf.all_group_members()))
+a = uf.find(0)
+IS_iudge = 1
 
-#https://atcoder.jp/contests/abc177/tasks/abc177_dを参照
+ai_box = [0] * N
+bi_box = [0] * N
+for key in range(N):
+    ai_box[uf.find(key)] += ai[key]
+    bi_box[uf.find(key)] += bi[key]
+
+if ai_box == bi_box:
+    print('Yes')
+else:
+    print('No')
