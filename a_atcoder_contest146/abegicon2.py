@@ -1,9 +1,9 @@
 N = int(input())
 S = str(input())
-
-a = S[0:len(S)//2]
-b = S[len(S)//2::]
-if a == b:
-    print('Yes')
-else:
-    print('No')
+new_S = ''
+for i in S: 
+    if ord(i) + N <= 90:
+        new_S += chr(ord(i) + N)
+    else:
+        new_S += chr(ord(i) + N - 26)
+print(new_S)
