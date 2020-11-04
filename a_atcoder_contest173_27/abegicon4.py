@@ -1,12 +1,14 @@
-import bisect
+from collections import Counter
 
-seq = [1, 5, 4, 3, 8, 6, 9, 7, 2, 4]
+N = int(input())
+Ai = list(map(int,input().split()))
+Q = int(input())
+ans = sum(Ai)
+Ai_count = Counter(Ai)
 
-LIS = [seq[0]]
-for i in range(len(seq)):
-    if abs(seq[i] - LIS[-1]) > 3:
-        LIS.append(seq[i])
-    else:
-        LIS[bisect.bisect_left(LIS, seq[i])] = seq[i]
-
-print(len(LIS))
+for i in range(Q):
+    bc = list(map(int,input().split()))
+    ans += (bc[1] - bc[0]) * Ai_count[bc[0]]
+    Ai_count[bc[1]] += Ai_count[bc[0]]
+    Ai_count[bc[0]] = 0
+    print(ans)

@@ -1,12 +1,9 @@
-import bisect
+N = int(input())
+ci = list(str(input()))
 
-seq = [1, 5, 4, 3, 8, 6, 9, 7, 2, 4]
-
-LIS = [seq[0]]
-for i in range(len(seq)):
-    if abs(seq[i] - LIS[-1]) > 3:
-        LIS.append(seq[i])
-    else:
-        LIS[bisect.bisect_left(LIS, seq[i])] = seq[i]
-
-print(len(LIS))
+cnt = 0
+count_Red = ci.count('R')
+for i in range(count_Red):
+    if ci[i] == 'W':
+        cnt += 1
+print(cnt)
