@@ -1,9 +1,12 @@
+#一旦パス
+
 N, M = map(int,input().split())
 Ai = list(map(int,input().split()))
 x = len(Ai) - 1
 Ai.sort()
 for i in range(M):
     Ai[x] /= 2
+
 
 print(sum(Ai))
 
