@@ -1,7 +1,4 @@
-N = int(input())
-Ai = list(map(int,input().split()))
-ans = 0
-for i in Ai:
-    ans += 1/i
-
-print(1/ans)
+k, x = map(int,input().split())
+mini = x - (k - 1)
+for i in range(mini , k+x, 1):
+    print(i, end=" ")

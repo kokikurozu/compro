@@ -1,7 +1,2 @@
-a = int(input())
-s = str(input())
-
-if a >=3200:
-    print(s)
-else:
-    print('red')
+a, b = map(int,input().split())
+print(max(a+b,a-b,a*b))

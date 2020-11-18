@@ -1,14 +1,23 @@
-#deque practice
-from collections import deque
-
 N = int(input())
-vi = list(map(int,input().split()))
-dvi = deque(vi)
+list_S = [0 for i in range(N)]
+for i in range(N):
+    s = list(input())
+    s.sort()
+    list_S[i] = s
 
-for i in range(N-1):
-    vi.sort(reverse = True)
-    x = vi.pop()
-    y = vi.pop()
-    vi.append((x+y)/2)
+list_S.sort()
+now_word = ''
+cnt = 0
+ans = 0
 
-print(vi[0])
+for i in list_S:
+    if i == now_word:
+        ans += cnt
+        cnt += 1
+    else:
+        ans += cnt
+        cnt = 0
+        now_word = i
+
+ans += cnt
+print(ans)
