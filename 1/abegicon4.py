@@ -1,4 +1,10 @@
-n,m = map(int,input().split())
+import math
 
-ans = (m * 1900 + 100 * (n-m)) * (2 ** m)
-print(ans)
+x,y,a,b = map(int,input().split())
+keikenti = 0
+while x*a - x < b and x * a < y:
+    x = x * a
+    keikenti += 1
+
+keikenti += ((y - 1 - x)//b)
+print(keikenti)

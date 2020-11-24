@@ -1,7 +1,8 @@
-import math
+N = int(input())
+ai = list(map(int,input().split()))
+ai.sort(reverse = True)
 
-n,k = map(int,input().split())
-Ai = list(map(int,input().split()))
-#a = Ai.index(1)
-
-print(math.ceil((n-k) / (k-1) + 1))
+ans = 0
+for i in range(1,2*N,2):
+    ans += ai[i]
+print(ans)
