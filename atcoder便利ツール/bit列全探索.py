@@ -4,8 +4,19 @@ for i in range(2**N):
     for j in range(len(ls)):
         if (i >> j) & 1:
             ls[j] = 0
-    print(ls)
+    print(ls) #この位置にbit列が用意されるので、ここにコードを書く
 #N個のビット列がすべてlsに格納される
+#appendを利用する場合
+N = 3
+ls_list = []
+for i in range(2**N):
+    ls = [1]*N
+    for j in range(len(ls)):
+        if (i >> j) & 1:
+            ls[j] = 0
+    ls_list.append(ls)
+print(ls_list)
+
 '''
 N=H
 for i in range(2**N):
