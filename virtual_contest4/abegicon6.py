@@ -8,5 +8,3 @@ listq = sorted(listq, reverse=True)
 listr = sorted(listr, reverse=True)
 
 oisisa = 0
-for noapple in listr:
-    if
