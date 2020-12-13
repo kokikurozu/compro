@@ -1,10 +1,10 @@
 #####segfunc#####
 def segfunc(x, y):
-    return 'セグ木判定対象になる'
+    return x ^ y
 #################
 
 #####ide_ele#####
-ide_ele = 'ここにセグ木が2**nにならない際に、邪魔にならない値を挿入する'
+ide_ele = 0
 #################
 
 ######init_val###
@@ -49,7 +49,7 @@ class SegTree:
         while k > 1:
             self.tree[k >> 1] = self.segfunc(self.tree[k], self.tree[k ^ 1])
             k >>= 1
-
+#配列のどこまでを範囲とするか,開始を含み開始を含まず
     def query(self, l, r):
         """
         [l, r)のsegfuncしたものを得る
@@ -73,3 +73,16 @@ class SegTree:
 """
 セグ木は値の更新と、クエリに応えることができる
 """
+
+n,q = map(int,input().split())
+ai = list(map(int,input().split()))
+
+seg = SegTree(ai, segfunc, ide_ele)
+for i in range(q):
+    t,x,y = map(int,input().split())
+    if t == 2:
+        ans = seg.query(x-1, y)
+        print(ans)
+    else:
+        seg.update(x-1,ai[x-1]^y)
+        ai[x-1] = ai[x-1]^y
