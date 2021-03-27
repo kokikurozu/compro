@@ -1,18 +1,11 @@
-a,b,w = map(int,input().split())
-w = w*1000
-a_judge = 0
-b_judge = 0
-is_flg = 0
-for i in range(1000000):
-    a_judge += a
-    b_judge += b
-    if a_judge <= w <= b_judge:
-        is_flg = 1
-if is_flg == 0:
-    print('UNSATISFIABLE')
+a,k = map(int,input().split())
+ans = 0
+if k == 0:
+    ans = 2 * (10 ** 12) - a
 else:
-    x = w//b
-    if w//b == 0:
-        x = 1    
-    print(-(-w//b),end = ' ')
-    print(w//a)
+    for i in range(10000000):
+        ans += 1
+        a = a + 1 + a * k
+        if a >= 2 * (10 ** 12):
+            break
+print(ans)
