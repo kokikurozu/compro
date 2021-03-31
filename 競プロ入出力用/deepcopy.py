@@ -1,4 +1,15 @@
 from copy import deepcopy
+
+#基本的な使い方
+yi = [[0,1],[5,3],[6,4]]
+yi_copy = deepcopy(yi)
+yi_copy[0][1] = 100
+print(yi_copy)
+print(yi)
+
+
+#以下deepcopyでないとどんな問題が起こるか
+
 n = 3
 xi = [[0,1],[5,3],[6,4]]
 xi_copy = xi
