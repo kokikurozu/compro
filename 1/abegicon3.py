@@ -1,17 +1,9 @@
-n = int(input())
-s = [list(map(int, input().split())) for _ in range(n)]
-sen = [s[i][0]/s[i][1] for i in range(n)]
-x = sum(sen)
-point = 0
-pos = 0
-for i in range(len(sen)):
-    point += sen[i]
-    pos += s[i][0]
-    if point >= x/2:
-        point -= sen[i]
-        pos -= s[i][0]
+r,x,y = map(int,input().split())
+kyori = x ** 2 + y ** 2
+#print(kyori)
+ans = 0
+for i in range(10000000000):
+    k = (r * i) * (r * i)
+    if kyori < k:
         break
-y = (x/2) - point
-z = (y * s[i][1])
-pos += z
-print(pos)
+print(i)

@@ -1,5 +1,5 @@
-x = int(input())
-if (x//100)*100 == x and x != 0:
-    print("Yes")
+S = input()
+if S[-1] == 't':
+    print('ist')
 else:
-    print("No")
+    print('er')
