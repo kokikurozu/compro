@@ -1,19 +1,33 @@
-N,W = map(int,input().split())
-STP=[list(map(int,input().split()))for _ in range(N)]
-Time = [0 for i in range(2*(10**5)+1)]
-
-Is_judge = 'Yes'
-cnt = 0
-
-#増減表みたいなのを作る
-for i in STP:
-    Time[i[0]] += i[2]
-    Time[i[1]] -= i[2]
-
-for j in Time:
-    cnt += j
-    if cnt > W:
-        Is_judge = 'No'
-        break
-
-print(Is_judge)
+n,q = map(int,input().split())
+li = [-1 for i in range(n+1)]
+s = [list(map(int, input().split())) for _ in range(q)]
+ 
+def back_search(a):
+    a.index()
+    return
+ 
+def front_search(a):
+    return
+ 
+for i in range(q):
+    z = []
+    if s[i][0] == 1:
+        li[s[i][1]] = s[i][2]
+    elif s[i][0] == 2:
+        li[s[i][1]] = -1
+    else:
+        x = s[i][1]
+        while True:
+            try:
+                x = li.index(x)
+            except:
+                break
+        while True:
+            if x < 0:
+                break
+            z.append(x)
+            x = li[x]
+        print(len(z), end = ' ')
+        for i in range(len(z)-1):
+            print(z[i],end = ' ')
+        print(z[-1])
